@@ -10,18 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF_EF_Rebbit_MSTest_Moq
+namespace WPF_EF_Rebbit_MSTest_Moq.Project.View
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
-	{
-		public MainWindow() {
-			InitializeComponent();
-		}
-	}
+    /// <summary>
+    /// Interaction logic for CardPage.xaml
+    /// </summary>
+    public partial class CardPage : Window
+    {
+        public CardPage()
+        {
+            InitializeComponent();
+        }
+    }
 }

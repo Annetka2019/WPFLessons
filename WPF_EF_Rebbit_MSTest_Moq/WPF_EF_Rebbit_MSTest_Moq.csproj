@@ -73,8 +73,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Framework\DelegateCommand.cs" />
     <Compile Include="Project\Model\Card.cs" />
     <Compile Include="Project\Model\Indicator.cs" />
+    <Compile Include="Framework\Base\BaseViewModel.cs" />
+    <Compile Include="Project\ViewModel\CardPageViewModel.cs" />
+    <Compile Include="Project\ViewModel\CardSectionViewModel.cs" />
     <Compile Include="Project\View\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
     </Compile>
@@ -85,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\ProjectDbContext.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

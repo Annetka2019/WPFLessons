@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Freelance\C#\Lessons\WPF_EF_Rebbit_MSTest_Moq\WPF_EF_Rebbit_MSTest_Moq\App.xaml
-11151548125
+2384994191
 
-9737180792
+101485171548
 13152784993
-MainWindow.xaml;
+App\View\CardPage.xaml;App\View\CardSection.xaml;
 
 False
 

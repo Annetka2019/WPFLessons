@@ -32,7 +32,7 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 		
 		private void ShowCard(object obj) {
 			var cardPage = new CardPage();
-			var cardPageViewModel = new CardPageViewModel();
+			var cardPageViewModel = new CardPageViewModel {Card = SelectedCard};
 			cardPage.DataContext = cardPageViewModel;
 			cardPage.Show();
 		}

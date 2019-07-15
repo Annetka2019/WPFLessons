@@ -73,9 +73,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Migrations\201907152029145_IndicatorTypeIsRequired.cs" />
+    <Compile Include="Migrations\201907152029145_IndicatorTypeIsRequired.Designer.cs">
+      <DependentUpon>201907152029145_IndicatorTypeIsRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Framework\DelegateCommand.cs" />
     <Compile Include="Project\Model\Card.cs" />
     <Compile Include="Project\Model\Indicator.cs" />
+    <Compile Include="Project\Model\IndicatorInCard.cs" />
     <Compile Include="Framework\Base\BaseViewModel.cs" />
     <Compile Include="Project\ViewModel\CardPageViewModel.cs" />
     <Compile Include="Project\ViewModel\CardSectionViewModel.cs" />
@@ -103,6 +109,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201907152029145_IndicatorTypeIsRequired.resx">
+      <DependentUpon>201907152029145_IndicatorTypeIsRequired.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

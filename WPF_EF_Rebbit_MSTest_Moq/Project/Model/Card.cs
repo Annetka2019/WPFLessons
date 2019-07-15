@@ -11,7 +11,7 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.Model
 		[Required]
 	    public string Number { get; set; }
 
-	    [Required]
+	    [Required, MaxLength(500)]
 		public string Name { get; set; }
 
 	    public DateTime? StartDate { get; set; }
@@ -20,6 +20,6 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.Model
 
 	    public decimal Assessment { get; set; }
 
-	    public virtual ICollection<Indicator> Indicators { get; set; } = new HashSet<Indicator>();
+	    public virtual ICollection<IndicatorInCard> IndicatorInCards { get; set; } = new HashSet<IndicatorInCard>();
     }
 }

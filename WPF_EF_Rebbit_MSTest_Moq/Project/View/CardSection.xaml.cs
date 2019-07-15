@@ -24,10 +24,6 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.View
 	{
 		public CardSection() {
 			InitializeComponent();
-
-			using (var ctx = new ProjectDbContext()) {
-				ctx.Cards.Load();
-			}
 		}
 	}
 }

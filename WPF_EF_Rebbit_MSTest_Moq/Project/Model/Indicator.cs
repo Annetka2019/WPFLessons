@@ -8,13 +8,12 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.Model
     {
 	    public Guid Id { get; set; }
 
-		[Required]
+		[Required, MaxLength(400)]
 	    public string Name { get; set; }
 
-	    public byte Weight { get; set; }
+		[Required, MaxLength(500)]
+	    public string Type { get; set; }
 
-	    public string Assessment { get; set; }
-
-	    public virtual ICollection<Card> Cards { get; set; } = new HashSet<Card>();
-    }
+		public virtual ICollection<IndicatorInCard> IndicatorInCards { get; set; } = new HashSet<IndicatorInCard>();
+	}
 }

@@ -78,9 +78,13 @@
       <DependentUpon>201907152029145_IndicatorTypeIsRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Framework\DelegateCommand.cs" />
     <Compile Include="Project\Model\Card.cs" />
     <Compile Include="Project\Model\Indicator.cs" />
     <Compile Include="Project\Model\IndicatorInCard.cs" />
+    <Compile Include="Framework\Base\BaseViewModel.cs" />
+    <Compile Include="Project\ViewModel\CardPageViewModel.cs" />
+    <Compile Include="Project\ViewModel\CardSectionViewModel.cs" />
     <Compile Include="Project\View\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
     </Compile>
@@ -91,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\ProjectDbContext.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -85,14 +85,23 @@
     <Compile Include="Framework\Base\BaseViewModel.cs" />
     <Compile Include="Project\ViewModel\CardPageViewModel.cs" />
     <Compile Include="Project\ViewModel\CardSectionViewModel.cs" />
+    <Compile Include="Project\ViewModel\IndicatorPageViewModel.cs" />
     <Compile Include="Project\ViewModel\NavigationViewModel.cs" />
-    <Compile Include="Project\View\CardPage.xaml.cs">
+    <Compile Include="Project\ViewModel\IndicatorSectionViewModel.cs" />    <Compile Include="Project\View\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Project\View\CardSection.xaml.cs">
       <DependentUpon>CardSection.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Project\View\IndicatorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Project\View\IndicatorSection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Project\View\NavigationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,10 +109,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\ProjectDbContext.cs" />
+
+    <Compile Include="Project\View\IndicatorPage.xaml.cs">
+      <DependentUpon>IndicatorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Project\View\IndicatorSection.xaml.cs">
+      <DependentUpon>IndicatorSection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Project\View\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Annotations.cs" />
+    </Compile>    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

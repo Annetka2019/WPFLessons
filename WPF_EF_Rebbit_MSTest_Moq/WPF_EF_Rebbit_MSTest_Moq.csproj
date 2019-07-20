@@ -85,6 +85,7 @@
     <Compile Include="Framework\Base\BaseViewModel.cs" />
     <Compile Include="Project\ViewModel\CardPageViewModel.cs" />
     <Compile Include="Project\ViewModel\CardSectionViewModel.cs" />
+    <Compile Include="Project\ViewModel\NavigationViewModel.cs" />
     <Compile Include="Project\View\CardPage.xaml.cs">
       <DependentUpon>CardPage.xaml</DependentUpon>
     </Compile>
@@ -92,9 +93,16 @@
       <DependentUpon>CardSection.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Project\View\NavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\ProjectDbContext.cs" />
+    <Compile Include="Project\View\NavigationView.xaml.cs">
+      <DependentUpon>NavigationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

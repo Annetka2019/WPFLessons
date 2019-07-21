@@ -16,13 +16,23 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 
 		private void InitCommands() {
 			CardSectionOpenCommand = new DelegateCommand(OpenCards);
-			IndicatorSectionOpenCommand = new DelegateCommand(x => {});
+			IndicatorSectionOpenCommand = new DelegateCommand(OpenIndicators);
 		}
 
 		private void OpenCards(object obj) {
-			var cardSectionViewModel = new CardSectionViewModel();
-			var cardSection = new CardSection {DataContext = cardSectionViewModel};
+			var cardSection = new CardSection {
+				DataContext = new CardSectionViewModel(),
+				ShowInTaskbar = false
+			};
 			cardSection.ShowDialog();
+		}
+
+		private void OpenIndicators(object obj) {
+			var indicatorSection = new IndicatorSection {
+				DataContext = new IndicatorSectionViewModel(),
+				ShowInTaskbar = false
+			};
+			indicatorSection.ShowDialog();
 		}
 	}
 }

@@ -8,12 +8,15 @@
     Title="Indicators"
     Width="800"
     Height="450"
+    Topmost="True"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.DataContext>
         <viewModels:IndicatorSectionViewModel />
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -41,12 +44,30 @@
             Command="{Binding EditCommand}">
             Edit
         </Button>
+        <Button
+            Grid.Row="0"
+            Grid.Column="2"
+            Width="70"
+            Height="25"
+            Margin="20"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Command="{Binding RemoveCommand}">
+            Remove
+        </Button>
         <DataGrid
-            Name="Card"
+            Name="IndicatorsDataGrid"
             Grid.Row="1"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
             ItemsSource="{Binding Indicators}"
-            SelectedItem="{Binding SelectedIndicator}" />
+            SelectedItem="{Binding SelectedIndicator}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                <DataGridTextColumn Binding="{Binding Type}" Header="Type" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

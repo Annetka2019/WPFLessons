@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF_EF_Rebbit_MSTest_Moq.Database;
 using WPF_EF_Rebbit_MSTest_Moq.Framework;
 using WPF_EF_Rebbit_MSTest_Moq.Framework.Base;
+using WPF_EF_Rebbit_MSTest_Moq.Project.Events;
 using WPF_EF_Rebbit_MSTest_Moq.Project.Model;
 using WPF_EF_Rebbit_MSTest_Moq.Project.View;
 
@@ -21,9 +19,10 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 		}
 
 		public ObservableCollection<Indicator> Indicators { get; private set; }
-		public Indicator  SelectedIndicator { get; set; }
+		public Indicator SelectedIndicator { get; set; }
 		public ICommand AddCommand { get; private set; }
 		public ICommand EditCommand { get; private set; }
+		public ICommand RemoveCommand { get; private set; }
 
 		private void InitIndicatorsCollection() {
 			using (var ctx = new ProjectDbContext()) {
@@ -32,31 +31,52 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 		}
 
 		private void InitCommands() {
-			AddCommand = new DelegateCommand(AddIndicator, CanAddIndicator);
+			AddCommand = new DelegateCommand(AddIndicator);
 			EditCommand = new DelegateCommand(EditIndicator, CanEditIndicator);
+			RemoveCommand = new DelegateCommand(RemoveIndicator, CanRemoveIndicator);
 		}
 
 		private void AddIndicator(object obj) {
-			var indicatorPage = new IndicatorPage();
-			var indicatorPageViewModel = new IndicatorPageViewModel();
-			indicatorPage.DataContext = indicatorPageViewModel;
-			indicatorPage.ShowDialog();
-		}
-
-		private bool CanAddIndicator(object obj) {
-			return true;
+			ShowIndicatorPage("Add");
 		}
 
 		private void EditIndicator(object obj) {
-			var indicatorPage = new IndicatorPage();
-			var indicatorPageViewModel = new IndicatorPageViewModel { Indicator = SelectedIndicator};
-			indicatorPage.DataContext = indicatorPageViewModel;
+			ShowIndicatorPage("Edit");
+		}
+
+		private void ShowIndicatorPage(string mode) {
+			var indicatorPage = new IndicatorPage {
+				ShowInTaskbar = false
+			};
+			if (!(indicatorPage.DataContext is IndicatorPageViewModel indicatorPageViewModel)) return;
+			indicatorPageViewModel.IndicatorSaved += OnIndicatorSaved;
+			if (mode == "Edit") {
+				indicatorPageViewModel.Indicator = SelectedIndicator;
+			} 
 			indicatorPage.ShowDialog();
+		}
+
+		private void OnIndicatorSaved(object sender, IndicatorSavedEventArgs e) {
+			Indicators.Add(e.Indicator);
 		}
 
 		private bool CanEditIndicator(object obj) {
 			return SelectedIndicator != null;
 		}
 
+		private void RemoveIndicator(object obj) {
+			using (var ctx = new ProjectDbContext()) {
+				Indicator removedIndicator = ctx.Indicators.Find(SelectedIndicator.Id);
+				if (removedIndicator == null) return;
+				ctx.Indicators.Remove(removedIndicator);
+				ctx.SaveChanges();
+				Indicators.Remove(SelectedIndicator);
+				SelectedIndicator = null;
+			}
+		}
+
+		private bool CanRemoveIndicator(object obj) {
+			return SelectedIndicator != null;
+		}
 	}
 }

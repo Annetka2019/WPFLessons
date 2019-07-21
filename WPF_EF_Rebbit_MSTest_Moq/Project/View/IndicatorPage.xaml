@@ -8,6 +8,8 @@
     Title="Indicator"
     Width="800"
     Height="450"
+    Topmost="True"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.DataContext>
         <viewModels:IndicatorPageViewModel />
@@ -24,7 +26,8 @@
             Margin="20"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Command="{Binding SaveCommand}">
+            Command="{Binding SaveCommand}"
+            IsEnabled="{Binding IsSaveButtonEnabled}">
             Save
         </Button>
         <StackPanel
@@ -45,7 +48,7 @@
                     <TextBox
                         Width="100"
                         Margin="10,0,0,0"
-                        Text="{Binding Indicator.Name}" />
+                        Text="{Binding Indicator.Name, Mode=TwoWay}" />
                 </StackPanel>
                 <StackPanel
                     Name="NamePanel"
@@ -58,7 +61,7 @@
                     <TextBox
                         Width="100"
                         Margin="10,0,0,0"
-                        Text="{Binding Indicator.Type}" />
+                        Text="{Binding Indicator.Type, Mode=TwoWay}" />
                 </StackPanel>
             </Grid>
         </StackPanel>

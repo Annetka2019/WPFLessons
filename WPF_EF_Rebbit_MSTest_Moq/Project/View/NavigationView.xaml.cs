@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel.Interfaces;
 
 namespace WPF_EF_Rebbit_MSTest_Moq.Project.View
 {
@@ -19,8 +20,9 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.View
 	/// </summary>
 	public partial class NavigationView : Window
 	{
-		public NavigationView() {
+		public NavigationView(INavigationViewModel navigationViewModel) {
 			InitializeComponent();
+			DataContext = navigationViewModel;
 		}
 	}
 }

@@ -49,15 +49,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Factory, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Factory.3.3.2\lib\net45\Ninject.Extensions.Factory.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -88,12 +101,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Framework\ProjectModule.cs" />
     <Compile Include="Migrations\201907152029145_IndicatorTypeIsRequired.cs" />
     <Compile Include="Migrations\201907152029145_IndicatorTypeIsRequired.Designer.cs">
       <DependentUpon>201907152029145_IndicatorTypeIsRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Framework\DelegateCommand.cs" />
+    <Compile Include="Project\Core\PageOperation.cs" />
+    <Compile Include="Project\Core\IIndicatorPageFactory.cs" />
     <Compile Include="Project\Events\IndicatorSavedEventArgs.cs" />
     <Compile Include="Project\Model\Card.cs" />
     <Compile Include="Project\Model\Indicator.cs" />
@@ -101,6 +117,11 @@
     <Compile Include="Framework\Base\BaseViewModel.cs" />
     <Compile Include="Project\ViewModel\CardPageViewModel.cs" />
     <Compile Include="Project\ViewModel\CardSectionViewModel.cs" />
+    <Compile Include="Project\ViewModel\Interfaces\ICardPageViewModel.cs" />
+    <Compile Include="Project\ViewModel\Interfaces\ICardSectionViewModel.cs" />
+    <Compile Include="Project\ViewModel\Interfaces\IIndicatorPageViewModel.cs" />
+    <Compile Include="Project\ViewModel\Interfaces\IIndicatorSectionViewModel.cs" />
+    <Compile Include="Project\ViewModel\Interfaces\INavigationViewModel.cs" />
     <Compile Include="Project\ViewModel\IndicatorPageViewModel.cs" />
     <Compile Include="Project\ViewModel\NavigationViewModel.cs" />
     <Compile Include="Project\ViewModel\IndicatorSectionViewModel.cs" />
@@ -126,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\ProjectDbContext.cs" />
+    <Compile Include="Project\View\Interfaces\ICardSection.cs" />
+    <Compile Include="Project\View\Interfaces\IIndicatorPage.cs" />
+    <Compile Include="Project\View\Interfaces\IIndicatorSection.cs" />
     <Compile Include="Project\View\IndicatorPage.xaml.cs">
       <DependentUpon>IndicatorPage.xaml</DependentUpon>
     </Compile>
@@ -172,5 +196,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

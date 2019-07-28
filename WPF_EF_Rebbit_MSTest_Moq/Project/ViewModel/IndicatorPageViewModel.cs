@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using WPF_EF_Rebbit_MSTest_Moq.Database;
@@ -8,11 +7,12 @@ using WPF_EF_Rebbit_MSTest_Moq.Framework;
 using WPF_EF_Rebbit_MSTest_Moq.Framework.Base;
 using WPF_EF_Rebbit_MSTest_Moq.Project.Events;
 using WPF_EF_Rebbit_MSTest_Moq.Project.Model;
+using WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel.Interfaces;
 using WPF_EF_Rebbit_MSTest_Moq.Properties;
 
 namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 {
-	public class IndicatorPageViewModel: BaseViewModel
+	public class IndicatorPageViewModel: BaseViewModel, IIndicatorPageViewModel
 	{
 		public IndicatorPageViewModel() {
 			InitCommands();

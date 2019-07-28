@@ -14,16 +14,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF_EF_Rebbit_MSTest_Moq.Database;
+using WPF_EF_Rebbit_MSTest_Moq.Project.View.Interfaces;
+using WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel.Interfaces;
 
 namespace WPF_EF_Rebbit_MSTest_Moq.Project.View
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class CardSection : Window
+	public partial class CardSection : UserControl, ICardSection
 	{
-		public CardSection() {
+		public CardSection(ICardSectionViewModel cardSectionViewModel) {
 			InitializeComponent();
+			DataContext = cardSectionViewModel;
 		}
 	}
 }

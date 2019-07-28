@@ -11,16 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_EF_Rebbit_MSTest_Moq.Project.View.Interfaces;
+using WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel.Interfaces;
 
 namespace WPF_EF_Rebbit_MSTest_Moq.Project.View
 {
 	/// <summary>
 	/// Interaction logic for IndicatorSection.xaml
 	/// </summary>
-	public partial class IndicatorSection : Window
+	public partial class IndicatorSection : UserControl, IIndicatorSection
 	{
-		public IndicatorSection() {
+		public IndicatorSection(IIndicatorSectionViewModel indicatorSectionViewModel) {
 			InitializeComponent();
+			DataContext = indicatorSectionViewModel;
 		}
 	}
 }

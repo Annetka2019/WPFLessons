@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using WPF_EF_Rebbit_MSTest_Moq.Database;
 using WPF_EF_Rebbit_MSTest_Moq.Framework.Base;
 using WPF_EF_Rebbit_MSTest_Moq.Project.Model;
+using WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel.Interfaces;
 
 namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 {
-	public class CardPageViewModel: BaseViewModel
+	public class CardPageViewModel: BaseViewModel, ICardPageViewModel
 	{
 		public CardPageViewModel() {
 			InitCommands();
@@ -28,7 +24,6 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 		}
 
 		private void InitCommands() {
-			throw new NotImplementedException();
 		}
 	}
 }

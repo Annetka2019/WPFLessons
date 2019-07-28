@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using WPF_EF_Rebbit_MSTest_Moq.Database;
 using WPF_EF_Rebbit_MSTest_Moq.Framework;
 using WPF_EF_Rebbit_MSTest_Moq.Framework.Base;
+using WPF_EF_Rebbit_MSTest_Moq.Project.Core;
 using WPF_EF_Rebbit_MSTest_Moq.Project.Events;
 using WPF_EF_Rebbit_MSTest_Moq.Project.Model;
-using WPF_EF_Rebbit_MSTest_Moq.Project.View;
+using WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel.Interfaces;
 
 namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 {
-	public class IndicatorSectionViewModel: BaseViewModel
+	public class IndicatorSectionViewModel: BaseViewModel, IIndicatorSectionViewModel
 	{
-		public IndicatorSectionViewModel() {
+		private readonly IIndicatorPageFactory _indiactorPageFactory;
+
+		public IndicatorSectionViewModel(IIndicatorPageFactory indiactorPageFactory) {
+			_indiactorPageFactory = indiactorPageFactory ?? throw new ArgumentNullException(nameof(indiactorPageFactory));
 			InitIndicatorsCollection();
 			InitCommands();
 		}
@@ -37,22 +41,21 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 		}
 
 		private void AddIndicator(object obj) {
-			ShowIndicatorPage("Add");
+			ShowIndicatorPage(PageOperation.Add);
 		}
 
 		private void EditIndicator(object obj) {
-			ShowIndicatorPage("Edit");
+			ShowIndicatorPage(PageOperation.Edit);
 		}
 
-		private void ShowIndicatorPage(string mode) {
-			var indicatorPage = new IndicatorPage {
-				ShowInTaskbar = false
-			};
-			if (!(indicatorPage.DataContext is IndicatorPageViewModel indicatorPageViewModel)) return;
+		private void ShowIndicatorPage(PageOperation operation) {
+			var indicatorPage = (Window)_indiactorPageFactory.GetPage();
+			indicatorPage.ShowInTaskbar = false;
+			var indicatorPageViewModel = (IndicatorPageViewModel)indicatorPage.DataContext;
 			indicatorPageViewModel.IndicatorSaved += OnIndicatorSaved;
-			if (mode == "Edit") {
+			if (operation == PageOperation.Edit) {
 				indicatorPageViewModel.Indicator = SelectedIndicator;
-			} 
+			}
 			indicatorPage.ShowDialog();
 		}
 

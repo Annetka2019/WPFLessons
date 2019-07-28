@@ -1,21 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WPF_EF_Rebbit_MSTest_Moq.Database;
 using WPF_EF_Rebbit_MSTest_Moq.Framework;
 using WPF_EF_Rebbit_MSTest_Moq.Framework.Base;
 using WPF_EF_Rebbit_MSTest_Moq.Project.Model;
-using WPF_EF_Rebbit_MSTest_Moq.Project.View;
+using WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel.Interfaces;
 
 namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 {
-	public class CardSectionViewModel: BaseViewModel
+	public class CardSectionViewModel: BaseViewModel, ICardSectionViewModel
 	{
-		public CardSectionViewModel() {
+		private readonly Window _cardPage;
+
+		public CardSectionViewModel(Window cardPage) {
+			_cardPage = cardPage ?? throw new ArgumentNullException(nameof(cardPage));
 			InitCardsCollection();
 			InitCommands();
 		}
@@ -31,10 +31,9 @@ namespace WPF_EF_Rebbit_MSTest_Moq.Project.ViewModel
 		}
 		
 		private void ShowCard(object obj) {
-			var cardPage = new CardPage();
-			var cardPageViewModel = new CardPageViewModel {Card = SelectedCard};
-			cardPage.DataContext = cardPageViewModel;
-			cardPage.Show();
+			var cardPageViewModel = (CardPageViewModel)_cardPage.DataContext;
+			cardPageViewModel.Card = SelectedCard;
+			_cardPage.Show();
 		}
 
 		private bool CanShowCard(object obj) {

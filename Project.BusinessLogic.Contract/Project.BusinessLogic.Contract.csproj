@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\Event\IIndicatorSavedEventArgs.cs" />
     <Compile Include="Interface\Model\ICard.cs" />
     <Compile Include="Interface\ViewModel\ICardPageViewModel.cs" />
     <Compile Include="Interface\View\ICardSection.cs" />

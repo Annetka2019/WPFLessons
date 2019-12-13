@@ -10,8 +10,6 @@ namespace Project.Startup
 	/// </summary>
 	public partial class App : Application
 	{
-		public static StandardKernel Kernel { get; }
-
 		static App() {
 			Kernel = new StandardKernel(new DiModule());
 		}
@@ -19,6 +17,8 @@ namespace Project.Startup
 		public App() {
 			EntityFrameworkSetup.ConfigurateMigration();
 		}
+
+		public static StandardKernel Kernel { get; }
 
 		protected override void OnStartup(StartupEventArgs e) {
 			base.OnStartup(e);

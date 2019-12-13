@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using Project.BusinessLogic.Contract.Interface.Database;
+using Project.BusinessLogic.Contract.Interface.Event;
 using Project.BusinessLogic.Contract.Interface.Model;
 using Project.BusinessLogic.Contract.Interface.View;
 using Project.BusinessLogic.Contract.Interface.ViewModel;
 using Project.BusinessLogic.Enum;
-using Project.BusinessLogic.Event;
 using Project.BusinessLogic.Framework;
 using Project.BusinessLogic.Framework.Base;
 
@@ -55,7 +55,7 @@ namespace Project.BusinessLogic.Core.ViewModel
 		private void ShowIndicatorPage(PageOperation operation) {
 			var indicatorPage = (Window)_indiactorPageFactory.GetPage();
 			indicatorPage.ShowInTaskbar = false;
-			var indicatorPageViewModel = (IndicatorPageViewModel)indicatorPage.DataContext;
+			var indicatorPageViewModel = (IIndicatorPageViewModel)indicatorPage.DataContext;
 			indicatorPageViewModel.IndicatorSaved += OnIndicatorSaved;
 			if (operation == PageOperation.Edit) {
 				indicatorPageViewModel.Indicator = SelectedIndicator;
@@ -63,7 +63,7 @@ namespace Project.BusinessLogic.Core.ViewModel
 			indicatorPage.ShowDialog();
 		}
 
-		private void OnIndicatorSaved(object sender, IndicatorSavedEventArgs e) {
+		private void OnIndicatorSaved(object sender, IIndicatorSavedEventArgs e) {
 			Indicators.Add(e.Indicator);
 		}
 

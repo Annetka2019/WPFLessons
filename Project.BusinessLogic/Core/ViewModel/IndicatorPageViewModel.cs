@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Project.BusinessLogic.Contract.Interface.Database;
+using Project.BusinessLogic.Contract.Interface.Event;
 using Project.BusinessLogic.Contract.Interface.Model;
 using Project.BusinessLogic.Contract.Interface.ViewModel;
 using Project.BusinessLogic.Core.Model;
@@ -15,10 +15,11 @@ namespace Project.BusinessLogic.Core.ViewModel
 {
 	public class IndicatorPageViewModel: BaseViewModel, IIndicatorPageViewModel
 	{
-		private readonly IRepository<IIndicator> _repository;
+		private readonly IRepository<IIndicator> _indicatorRepository;
 
-		public IndicatorPageViewModel(IRepository<IIndicator> repository) {
-			_repository = repository ?? throw new ArgumentNullException(nameof(repository));
+		public IndicatorPageViewModel(IRepository<IIndicator> indicatorRepository) {
+			_indicatorRepository = 
+				indicatorRepository ?? throw new ArgumentNullException(nameof(indicatorRepository));
 			InitCommands();
 			SubscribeEvents();
 			SetEnabledAttributes();
@@ -53,13 +54,13 @@ namespace Project.BusinessLogic.Core.ViewModel
 		private void SaveIndicator(object obj) {
 			if (Indicator.Id == Guid.Empty) {
 				Indicator.Id = Guid.NewGuid();
-				_repository.Add(Indicator);
+				_indicatorRepository.Add(Indicator);
 				IndicatorSaved?.Invoke(this, new IndicatorSavedEventArgs {
 					Indicator = Indicator
 				});
 			}
 			else {
-				_repository.Edit(Indicator);
+				_indicatorRepository.Edit(Indicator);
 			}
 			
 			MessageBox.Show(Properties.Resources.IndicatorPageSavedMessage);
@@ -85,6 +86,6 @@ namespace Project.BusinessLogic.Core.ViewModel
 			IsSaveButtonEnabled = !string.IsNullOrEmpty(Indicator.Name) && !string.IsNullOrEmpty(Indicator.Type);
 		}
 
-		public event EventHandler<IndicatorSavedEventArgs> IndicatorSaved;
+		public event EventHandler<IIndicatorSavedEventArgs> IndicatorSaved;
 	}
 }

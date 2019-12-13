@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
-using WPF_EF_Rebbit_MSTest_Moq.Framework;
+using Project.Startup.Configuration;
 
-namespace WPF_EF_Rebbit_MSTest_Moq_Tests
+namespace Project.BusinessLogic.Tests
 {
 	[TestClass]
 	public class TestKernel
@@ -11,7 +11,7 @@ namespace WPF_EF_Rebbit_MSTest_Moq_Tests
 
 		[AssemblyInitialize]
 		public static void OnStartup(TestContext testContext) {
-			Instance = new StandardKernel(new ProjectModule());
+			Instance = new StandardKernel(new DiModule());
 		}
 	}
 }

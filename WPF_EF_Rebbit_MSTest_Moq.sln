@@ -21,7 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_Startup", "01_Startup", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Startup", "Project.Startup\Project.Startup.csproj", "{184BC91D-FA49-458B-A4CF-A7682BB1155C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_EF_Rebbit_MSTest_Moq_Tests", "WPF_EF_Rebbit_MSTest_Moq_Tests\WPF_EF_Rebbit_MSTest_Moq_Tests.csproj", "{32792C93-AB36-4F2E-BEFB-E08CEA320732}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.BusinessLogic.Tests", "Project.BusinessLogic.Tests\Project.BusinessLogic.Tests.csproj", "{32792C93-AB36-4F2E-BEFB-E08CEA320732}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05_Test", "05_Test", "{C7C473EE-69DB-4F00-987A-1BBF0B54FBF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,7 @@ Global
 		{7CBFC287-DFD2-411E-BF81-C70630797835} = {7D52EA81-1E87-4234-A444-F919DC933810}
 		{F3C8092D-F049-417F-887D-21D17AE56D3F} = {7D52EA81-1E87-4234-A444-F919DC933810}
 		{184BC91D-FA49-458B-A4CF-A7682BB1155C} = {CC37948A-D4A4-441B-9D24-BC4E1281DF7C}
+		{32792C93-AB36-4F2E-BEFB-E08CEA320732} = {C7C473EE-69DB-4F00-987A-1BBF0B54FBF3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {614C01C8-5FFD-499E-9076-AC5D4DB42FEF}

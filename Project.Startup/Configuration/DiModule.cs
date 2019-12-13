@@ -11,7 +11,7 @@ using Project.Presentation.View;
 
 namespace Project.Startup.Configuration
 {
-	internal class DiModule: NinjectModule
+	public class DiModule: NinjectModule
 	{
 		public override void Load() {
 			Bind<IMapper>().ToConstant(Mapper.Instance);
